@@ -23,8 +23,10 @@ Known. One issue, one fix queued.
 </Callout>
 
 <Callout kind="warn">
+
 Split since 5 November 2026: the reports hold three problems, not one. Read
 [#4471 · three problems, not one](/kb/incidents/4471-split) before you rely on this page.
+
 </Callout>
 
 ## What was merged
