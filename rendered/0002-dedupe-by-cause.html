@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+		<style>:root{--bg: #fbfaf7;--fg: #1d1d1b;--muted: #6b6a66;--line: #e3e0d8;--accent: #2f6f5e;--warn: #b4501f;--warn-bg: #fbeee6;--note-bg: #eef5f2;--mono: ui-monospace, "Cascadia Code", Menlo, monospace}@media(prefers-color-scheme:dark){:root{--bg: #171716;--fg: #ecebe6;--muted: #9c9a93;--line: #34332f;--accent: #6fbfa6;--warn: #f0905d;--warn-bg: #3a2418;--note-bg: #1d2c27}}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,sans-serif}.kb table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem}.kb th,.kb td{border-bottom:1px solid var(--line);padding:.35rem .5rem;text-align:left}.kb code{font-family:var(--mono);font-size:.88em}.kb a{color:var(--accent)}.kb.svelte-60g32v{max-width:760px;margin:0 auto;padding:2rem 16px 4rem}.crumb.svelte-60g32v{font:.8rem var(--mono);text-decoration:none;color:var(--muted)}h1.svelte-60g32v{margin:.25rem 0 .5rem;line-height:1.2}.meta.svelte-60g32v{display:flex;flex-wrap:wrap;gap:.5rem 1rem;color:var(--muted);font-size:.85rem;margin:0}.status.svelte-60g32v{border:1px solid var(--line);border-radius:99px;padding:0 .6rem}.stale.svelte-60g32v{color:var(--warn);font-weight:600}.banner.svelte-60g32v{background:var(--warn-bg);color:var(--warn);padding:.6rem 1rem;border-radius:6px}footer.svelte-60g32v{margin-top:3rem;color:var(--muted);font-size:.8rem;border-top:1px solid var(--line);padding-top:1rem}
+</style>
+		<style>.stamp.svelte-5qojh0{margin:2rem 0 0;font:.85rem var(--mono);color:var(--muted)}.stamp.svelte-5qojh0 b:where(.svelte-5qojh0){color:var(--accent);letter-spacing:.04em}.missing.svelte-5qojh0{color:var(--warn)}
+</style>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<!--[--><!--]--><title>0002 · Duplicates share a cause, not a subject line · support kb</title>
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents"><!--[--><!--[--><!----><!----><div class="kb svelte-60g32v"><header><a class="crumb svelte-60g32v" href="https://github.com/Julka768/mega-s01e03-what-it-shows/blob/main/src/routes/kb/%2Bpage.svx">support desk · kb</a> <h1 class="svelte-60g32v">0002 · Duplicates share a cause, not a subject line</h1> <p class="meta svelte-60g32v"><span>owner <b>Julka768</b></span> <span class="status proposed svelte-60g32v">proposed</span> <span class="svelte-60g32v">reviewed 2026-11-05 · 0 days ago</span></p></header> <!--[!--><!--]--> <main><p><strong>Date:</strong> 5 November 2026 · <strong>Deciders:</strong> Julka768, support desk (to accept) · <strong>Replaces:</strong> <a href="https://github.com/Julka768/mega-s01e03-what-it-shows/blob/main/src/routes/kb/decisions/0001-dedupe-by-subject/%2Bpage.svx">0001</a> once accepted</p> <h2>Context</h2> <p>Decision 0001 merges reports when their subject lines match. #4471 shows where that breaks: the
+same subjects (“Wrong day on the invite”, “Date is wrong”) arrive for three different problems,
+and all of them were merged into one ticket marked known. One fix was queued; it reaches only
+one of the three. See <a href="https://github.com/Julka768/mega-s01e03-what-it-shows/blob/main/src/routes/kb/incidents/4471-split/%2Bpage.svx">#4471 · three problems, not one</a>.</p> <p>The cause of a report is already computed in <code>causes.ts</code>, from the tenant (locale and booking
+form) and the channel. Intake’s tag is a guess and does not decide it.</p> <h2>Decision</h2> <p>Two reports are the same issue when they share a cause, not a subject line:</p> <ol><li>One id, one report.</li> <li>Place the report by its tenant and channel (<code>causeOf</code> in <code>causes.ts</code>).</li> <li>Read the body before merging into a big ticket. A report that does not describe what the
+ticket describes (for example a one-day move inside a day/month swap ticket) gets its own
+ticket, even when the subject matches.</li></ol> <h2>Consequences</h2> <ul><li>Each ticket holds one problem, and its count means one thing.</li> <li>Triage needs the tenant and a look at the body, so it is slower than subject matching.</li> <li>0001 stays as it was written. When this record is accepted, 0001 is replaced by it.</li></ul> <!--[--><p class="stamp svelte-5qojh0">desk ref <b class="svelte-5qojh0">DR-0WHT-NDPJ</b></p><!--]--><!----><!----></main> <footer class="svelte-60g32v">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!----><!----><!----><!--]--> <!--[!--><!--]--><!--]-->
+			
+			
+		</div>
+  </body>
+</html>

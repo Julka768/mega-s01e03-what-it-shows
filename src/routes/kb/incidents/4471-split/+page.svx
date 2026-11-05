@@ -54,6 +54,7 @@ not used here.
 ## Why one ticket hid three
 
 [Decision 0001](/kb/decisions/0001-dedupe-by-subject) merges reports on the subject line alone.
+A replacement is proposed in [decision 0002](/kb/decisions/0002-dedupe-by-cause).
 All three problems arrive under the same subjects ("Wrong day on the invite", "Date is wrong"),
 so the rule could never tell them apart. Only the body and the tenant can. A decision is not
 edited after it is accepted, so a change to that rule needs a new record.

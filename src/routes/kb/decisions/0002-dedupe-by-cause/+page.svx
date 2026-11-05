@@ -1,0 +1,43 @@
+---
+layout: runbook
+title: '0002 · Duplicates share a cause, not a subject line'
+owner: Julka768
+status: proposed
+reviewed: 2026-11-05
+signature: 'v1.eyJzdWIiOiIzMTIyIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTM5MDM5MjYsImV4cCI6MTc5Mzk5MDMyNn0.kNyPzOm5ww1Af-1oXTclnLg2p0bEkbfnoLoN_aD83Ys'
+---
+
+<script>
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+**Date:** 5 November 2026 · **Deciders:** Julka768, support desk (to accept) · **Replaces:**
+[0001](/kb/decisions/0001-dedupe-by-subject) once accepted
+
+## Context
+
+Decision 0001 merges reports when their subject lines match. #4471 shows where that breaks: the
+same subjects ("Wrong day on the invite", "Date is wrong") arrive for three different problems,
+and all of them were merged into one ticket marked known. One fix was queued; it reaches only
+one of the three. See [#4471 · three problems, not one](/kb/incidents/4471-split).
+
+The cause of a report is already computed in `causes.ts`, from the tenant (locale and booking
+form) and the channel. Intake's tag is a guess and does not decide it.
+
+## Decision
+
+Two reports are the same issue when they share a cause, not a subject line:
+
+1. One id, one report.
+2. Place the report by its tenant and channel (`causeOf` in `causes.ts`).
+3. Read the body before merging into a big ticket. A report that does not describe what the
+   ticket describes (for example a one-day move inside a day/month swap ticket) gets its own
+   ticket, even when the subject matches.
+
+## Consequences
+
+- Each ticket holds one problem, and its count means one thing.
+- Triage needs the tenant and a look at the body, so it is slower than subject matching.
+- 0001 stays as it was written. When this record is accepted, 0001 is replaced by it.
+
+<RenderStamp {signature} />
