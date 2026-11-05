@@ -1,0 +1,61 @@
+---
+layout: runbook
+title: '#4471 · three problems, not one'
+owner: Julka768
+status: open
+reviewed: 2026-11-05
+signature: Julka768
+---
+
+<script>
+  import ProblemSplit from '#lib/kb/ProblemSplit.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+[#4471](/kb/incidents/4471) was merged as one issue: the parser reads dates month first. Read the
+bodies and the reports describe three different problems. Each one now has its own ticket.
+
+<Callout kind="warn">
+Fixing the parser closes only one of them. The booking-v3 hint and the one-day move stay broken
+until they get their own fix.
+</Callout>
+
+## The split
+
+<ProblemSplit
+  ticket={4471}
+  issues={{
+    parser: 'https://github.com/Julka768/mega-s01e03-what-it-shows/issues/1',
+    hint: 'https://github.com/Julka768/mega-s01e03-what-it-shows/issues/2',
+    'one-day move': 'https://github.com/Julka768/mega-s01e03-what-it-shows/issues/3',
+  }}
+/>
+
+- **parser**: the shared parser reads every date month first, and every tenant on file writes the
+  day first. 7 April comes out as 4 July.
+- **hint**: the booking-v3 form prints `MM/DD/YYYY` under its date field. People type the month
+  first, as told, and the form reads the day first. Same swap, different bug: a parser fix does
+  not reach it.
+- **one-day move**: the date moves by one day, or differs by time zone ("Client in Lisbon got
+  Tuesday. Client in Toronto got Monday."). No day and month swap at all. The desk already listed
+  these in `desk-notes.json`, then filed them under the parser.
+
+## How a report is placed
+
+1. One id, one report. The export repeats some reports.
+2. On the desk's one-day-move list: **one-day move**.
+3. Came through the form at a tenant that runs booking-v3: **hint**.
+4. Any other report from a day-first tenant: **parser**.
+
+The tenant decides, not intake. `meta.intakeTag` is a guess from the reporter's browser and is
+not used here.
+
+## Why one ticket hid three
+
+[Decision 0001](/kb/decisions/0001-dedupe-by-subject) merges reports on the subject line alone.
+All three problems arrive under the same subjects ("Wrong day on the invite", "Date is wrong"),
+so the rule could never tell them apart. Only the body and the tenant can. A decision is not
+edited after it is accepted, so a change to that rule needs a new record.
+
+<RenderStamp {signature} />

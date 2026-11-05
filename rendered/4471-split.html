@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+		<style>:root{--bg: #fbfaf7;--fg: #1d1d1b;--muted: #6b6a66;--line: #e3e0d8;--accent: #2f6f5e;--warn: #b4501f;--warn-bg: #fbeee6;--note-bg: #eef5f2;--mono: ui-monospace, "Cascadia Code", Menlo, monospace}@media(prefers-color-scheme:dark){:root{--bg: #171716;--fg: #ecebe6;--muted: #9c9a93;--line: #34332f;--accent: #6fbfa6;--warn: #f0905d;--warn-bg: #3a2418;--note-bg: #1d2c27}}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,sans-serif}.kb table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem}.kb th,.kb td{border-bottom:1px solid var(--line);padding:.35rem .5rem;text-align:left}.kb code{font-family:var(--mono);font-size:.88em}.kb a{color:var(--accent)}.kb.svelte-60g32v{max-width:760px;margin:0 auto;padding:2rem 16px 4rem}.crumb.svelte-60g32v{font:.8rem var(--mono);text-decoration:none;color:var(--muted)}h1.svelte-60g32v{margin:.25rem 0 .5rem;line-height:1.2}.meta.svelte-60g32v{display:flex;flex-wrap:wrap;gap:.5rem 1rem;color:var(--muted);font-size:.85rem;margin:0}.status.svelte-60g32v{border:1px solid var(--line);border-radius:99px;padding:0 .6rem}.stale.svelte-60g32v{color:var(--warn);font-weight:600}.banner.svelte-60g32v{background:var(--warn-bg);color:var(--warn);padding:.6rem 1rem;border-radius:6px}footer.svelte-60g32v{margin-top:3rem;color:var(--muted);font-size:.8rem;border-top:1px solid var(--line);padding-top:1rem}
+</style>
+		<style>aside.svelte-hdh0t2{border-left:4px solid var(--accent);padding:.5rem 1rem;margin:1rem 0;background:var(--note-bg)}aside.warn.svelte-hdh0t2{border-color:var(--warn);background:var(--warn-bg)}
+</style>
+		<style>.sum.svelte-1pih05z{font-size:1.1rem}.none.svelte-1pih05z{color:var(--warn);font-weight:600}.stamp.svelte-5qojh0{margin:2rem 0 0;font:.85rem var(--mono);color:var(--muted)}.stamp.svelte-5qojh0 b:where(.svelte-5qojh0){color:var(--accent);letter-spacing:.04em}.missing.svelte-5qojh0{color:var(--warn)}
+</style>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<!--[--><!--]--><title>#4471 · three problems, not one · support kb</title>
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents"><!--[--><!--[--><!----><!----><div class="kb svelte-60g32v"><header><a class="crumb svelte-60g32v" href="/kb">support desk · kb</a> <h1 class="svelte-60g32v">#4471 · three problems, not one</h1> <p class="meta svelte-60g32v"><span>owner <b>Julka768</b></span> <span class="status open svelte-60g32v">open</span> <span class="svelte-60g32v">reviewed 2026-11-05 · 0 days ago</span></p></header> <!--[!--><!--]--> <main><p><a href="https://github.com/Julka768/mega-s01e03-what-it-shows/blob/main/src/routes/kb/incidents/4471/%2Bpage.svx">#4471</a> was merged as one issue: the parser reads dates month first. Read the
+bodies and the reports describe three different problems. Each one now has its own ticket.</p> <aside class="warn svelte-hdh0t2"><!---->Fixing the parser closes only one of them. The booking-v3 hint and the one-day move stay broken
+until they get their own fix.<!----></aside><!----> <h2>The split</h2> <p class="sum svelte-1pih05z"><strong>412</strong> reports merged into #4471 · <strong>3</strong> problems</p> <table><thead><tr><th>problem</th><th>reports</th><th>tenants</th><th>seen</th><th>ticket</th></tr></thead><tbody><!--[--><tr><td><code>parser</code></td><td>374</td><td>11</td><td>2026-04-01 → 2026-10-04</td><td><!--[--><a href="https://github.com/Julka768/mega-s01e03-what-it-shows/issues/1">#1</a><!--]--></td></tr><tr><td><code>hint</code></td><td>33</td><td>3</td><td>2026-04-17 → 2026-09-22</td><td><!--[--><a href="https://github.com/Julka768/mega-s01e03-what-it-shows/issues/2">#2</a><!--]--></td></tr><tr><td><code>one-day move</code></td><td>5</td><td>5</td><td>2026-04-02 → 2026-10-04</td><td><!--[--><a href="https://github.com/Julka768/mega-s01e03-what-it-shows/issues/3">#3</a><!--]--></td></tr><!--]--></tbody></table><!----> <ul><li><strong>parser</strong>: the shared parser reads every date month first, and every tenant on file writes the
+day first. 7 April comes out as 4 July.</li> <li><strong>hint</strong>: the booking-v3 form prints <code>MM/DD/YYYY</code> under its date field. People type the month
+first, as told, and the form reads the day first. Same swap, different bug: a parser fix does
+not reach it.</li> <li><strong>one-day move</strong>: the date moves by one day, or differs by time zone (“Client in Lisbon got
+Tuesday. Client in Toronto got Monday.”). No day and month swap at all. The desk already listed
+these in <code>desk-notes.json</code>, then filed them under the parser.</li></ul> <h2>How a report is placed</h2> <ol><li>One id, one report. The export repeats some reports.</li> <li>On the desk’s one-day-move list: <strong>one-day move</strong>.</li> <li>Came through the form at a tenant that runs booking-v3: <strong>hint</strong>.</li> <li>Any other report from a day-first tenant: <strong>parser</strong>.</li></ol> <p>The tenant decides, not intake. <code>meta.intakeTag</code> is a guess from the reporter’s browser and is
+not used here.</p> <h2>Why one ticket hid three</h2> <p><a href="https://github.com/Julka768/mega-s01e03-what-it-shows/blob/main/src/routes/kb/decisions/0001-dedupe-by-subject/%2Bpage.svx">Decision 0001</a> merges reports on the subject line alone.
+All three problems arrive under the same subjects (“Wrong day on the invite”, “Date is wrong”),
+so the rule could never tell them apart. Only the body and the tenant can. A decision is not
+edited after it is accepted, so a change to that rule needs a new record.</p> <!--[--><p class="stamp svelte-5qojh0">desk ref <b class="svelte-5qojh0">DR-3JQS-0SYV</b></p><!--]--><!----><!----></main> <footer class="svelte-60g32v">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!----><!----><!----><!--]--> <!--[!--><!--]--><!--]-->
+			
+			
+		</div>
+  </body>
+</html>
