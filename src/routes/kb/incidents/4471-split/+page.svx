@@ -4,7 +4,7 @@ title: '#4471 · three problems, not one'
 owner: Julka768
 status: open
 reviewed: 2026-11-05
-signature: Julka768
+signature: 'v1.eyJzdWIiOiIzMTIyIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTM5MDM5MjYsImV4cCI6MTc5Mzk5MDMyNn0.kNyPzOm5ww1Af-1oXTclnLg2p0bEkbfnoLoN_aD83Ys'
 ---
 
 <script>
